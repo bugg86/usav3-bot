@@ -1,15 +1,17 @@
+import { Scrim } from '../../../generated/prisma';
 import { prisma } from '../db'
 import { Request, Response } from 'express';
 
-    interface User {
-        id: number;
-        name: string;
-    }
+    export async function create(body: Scrim, res: Response){
+        const response = await prisma.scrim.create({
+            data: {
+                osuId: body.osuId,
+                discordUsername: body.discordUsername,
+                discordId: BigInt(body.discordId),
+                osuUsername: body.osuUsername,
+                weeksRegistered: body.weeksRegistered
+            }
+        });
 
-    export const getUsers = (req: Request, res: Response) => {
-        const users: User[] = [
-            { id: 1, name: 'Jane Doe', },
-            { id: 2, name: 'John Smith' }
-        ];
-        res.json(users);
-    };
+        return response;
+    }

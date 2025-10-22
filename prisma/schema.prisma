@@ -14,11 +14,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Signup {
+model Scrim {
   uid               Int         @id @default(autoincrement())
   osuId             Int     
   discordUsername   String      @db.VarChar(255)
-  discordId         Int
+  discordId         BigInt
   osuUsername       String      @db.VarChar(255)
   weeksRegistered   Int[]
 }

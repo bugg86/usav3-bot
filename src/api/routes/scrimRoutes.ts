@@ -1,11 +1,13 @@
 import { Router, Request, Response } from 'express';
-import { getUsers } from '../controllers/scrimController';
+import { prisma } from '../db'
+import { create } from '../controllers/scrimController';
+import { Scrim } from '../../../generated/prisma';
 
     const router = Router();
 
-    router.get('/users', (req: Request, res: Response) => {
+    router.post('/create', (req: Request, res: Response) => {
         // Example: Fetch users from a database or service
-        getUsers(req, res);
+        res.json(create(req.body as Scrim, res));
     });
 
     export default router;

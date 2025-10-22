@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Scrim" ALTER COLUMN "discordId" SET DATA TYPE BIGINT;
