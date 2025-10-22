@@ -10,4 +10,16 @@ import { Scrim } from '../../../generated/prisma';
         res.json(create(req.body as Scrim, res));
     });
 
+    router.delete('/remove', (req: Request, res: Response) => {
+
+    });
+
+    router.put('/modify', (req: Request, res: Response) => {
+
+    });
+
+    router.get('/status', (req: Request, res: Response) => {
+
+    });
+
     export default router;
