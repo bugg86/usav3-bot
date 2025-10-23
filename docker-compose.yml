@@ -25,14 +25,15 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
   discord:
-    image: node:latest
+    image: bugg86/usav3-bot:latest
     container_name: discord_bot
     restart: unless_stopped
   api:
-    image: node:latest
+    image: bugg86/usav3-botapi:latest
     container_name: api
     restart: unless_stopped
+    ports:
+      - '3000:3000'
 
-    
 volumes:
   postgres-data:
