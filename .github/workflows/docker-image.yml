@@ -27,5 +27,5 @@ jobs:
         with:
           push: true
           file: Bot.Dockerfile
-          tags: bugg86/usav3-botapi:$(date +%s), bugg86/usav3-botapi:latest
+          tags: bugg86/usav3-botapi:${{ github.sha }}, bugg86/usav3-botapi:latest
           platforms: linux/arm64, linux/amd64
