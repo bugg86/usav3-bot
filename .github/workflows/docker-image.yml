@@ -18,11 +18,12 @@ jobs:
         
       - name: Write env file
         run: |
-          touch .env
-          printf 'DATABASE_URL="%s"\n' "$DB_URL" >> .env
-          printf 'TOKEN="%s"\n' "$BOT_TOKEN" >> .env
-          printf 'CLIENT_ID="%s"\n' "$CLIENT" >> .env
-          printf 'GUILD_ID="%s"\n' "$GUILD" >> .env
+          cat << 'EOF' >> .env
+          DATABASE_URL="${DB_URL}"
+          TOKEN="${BOT_TOKEN}"
+          CLIENT_ID="${CLIENT}"
+          GUILD_ID="${GUILD}"
+          EOF
         env:
           DB_URL: ${{ secrets.DATABASE_URL }}
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
