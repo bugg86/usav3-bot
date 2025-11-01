@@ -55,7 +55,7 @@ jobs:
           file: Bot.Dockerfile
           tags: bugg86/usav3-botapi:${{ github.sha }}, bugg86/usav3-botapi:latest
           platforms: linux/amd64
-          build_args: |
+          build-args: |
             DATABASE_URL=${{ secrets.DATABASE_URL }}
             TOKEN=${{ secrets.BOT_TOKEN }}
             CLIENT_ID=${{ secrets.CLIENT_ID }}

@@ -18,6 +18,6 @@ COPY package*.json bun.lock ./
 RUN bun install --frozen-lockfile
 
 COPY ./src/bot ./src/bot
-COPY .env ./
+# COPY .env ./
 
 CMD ["bun", "run", "src/bot/index.ts"]

@@ -16,7 +16,7 @@ WORKDIR /usr/src/app
 COPY package.json bun.lock ./
 
 COPY ./prisma ./prisma
-COPY .env ./
+# COPY .env ./
 
 RUN bun install
 RUN bunx prisma generate
