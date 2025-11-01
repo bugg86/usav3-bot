@@ -19,10 +19,10 @@ jobs:
       - name: Write env file
         run: |
           touch .env
-          echo "DATABASE_URL=$DB_URL" >> .env
-          echo "TOKEN=$BOT_TOKEN" >> .env
-          echo "CLIENT_ID=$CLIENT" >> .env
-          echo "GUILD_ID=$GUILD" >> .env
+          printf 'DATABASE_URL="%s"\n' "$DB_URL" >> .env
+          printf 'TOKEN="%s"\n' "$BOT_TOKEN" >> .env
+          printf 'CLIENT_ID="%s"\n' "$CLIENT" >> .env
+          printf 'GUILD_ID="%s"\n' "$GUILD" >> .env
         env:
           DB_URL: ${{ secrets.DATABASE_URL }}
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
