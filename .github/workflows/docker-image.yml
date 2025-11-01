@@ -13,6 +13,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+      - name: Write env file
+        run: |
+          touch .env
+          echo "DATABASE_URL=${{ secrets.API_KEY }}" >> .env
+          echo "TOKEN=${{ secrets.BOT_TOKEN }}" >> .env
+          echo "CLIENT_ID=${{ secrets.CLIENT_ID }}" >> .env
+          echo "GUILD_ID=${{ secrets.GUILD_ID }}" >> .env
+        
       - uses: actions/checkout@v4
         name: Checkout code
         
