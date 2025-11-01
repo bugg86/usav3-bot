@@ -18,12 +18,18 @@ jobs:
         
       - name: Write env file
         run: |
-          cat << 'EOF' >> .env
-          DATABASE_URL="${DB_URL}"
-          TOKEN="${BOT_TOKEN}"
-          CLIENT_ID="${CLIENT}"
-          GUILD_ID="${GUILD}"
-          EOF
+          touch .env
+          echo "DATABASE_URL=$DB_URL" >> .env
+          echo "TOKEN=$BOT_TOKEN" >> .env
+          echo "CLIENT_ID=$CLIENT" >> .env
+          echo "GUILD_ID=$GUILD" >> .env
+        # run: |
+        #   cat << 'EOF' >> .env
+        #   DATABASE_URL="${DB_URL}"
+        #   TOKEN="${BOT_TOKEN}"
+        #   CLIENT_ID="${CLIENT}"
+        #   GUILD_ID="${GUILD}"
+        #   EOF
         env:
           DB_URL: ${{ secrets.DATABASE_URL }}
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
@@ -32,6 +38,9 @@ jobs:
       - name: ls
         run: |
           ls ./
+      - name: help
+        run: |
+          cat .env
         
       - uses: docker/login-action@v3.6.0
         name: Login to docker
