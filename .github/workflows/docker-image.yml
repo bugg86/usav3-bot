@@ -13,6 +13,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: docker/login-action@v3.6.0
+    - name: Login to docker
+      with:
+        username: bugg86
+        password: ${{ secrets.DOCKER_PASSWORD }}
+    
     - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+    - name: Build and tag the api image
+      run: docker build . --file Dockerfile --tag bugg86/usav3-botapi:$(date +%s) --tag bugg86/usav3-botapi:latest
+      
+    - uses: actions/checkout@v4
+    - name: Build and tag the bot image
+      run: docker build . --file Dockerfile --tag bugg86/usav3-bot:$(date +%s) --tag bugg86/usav3-bot:latest
