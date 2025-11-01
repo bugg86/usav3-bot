@@ -17,6 +17,7 @@ jobs:
         name: Checkout code
         
       - name: Write env file
+        working-directory: ./
         run: |
           touch .env
           echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> .env
