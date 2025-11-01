@@ -17,13 +17,17 @@ jobs:
         name: Checkout code
         
       - name: Write env file
-        working-directory: ./
         run: |
           touch .env
-          echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> .env
-          echo "TOKEN=${{ secrets.BOT_TOKEN }}" >> .env
-          echo "CLIENT_ID=${{ secrets.CLIENT_ID }}" >> .env
-          echo "GUILD_ID=${{ secrets.GUILD_ID }}" >> .env
+          echo "DATABASE_URL=$DB_URL" >> .env
+          echo "TOKEN=$BOT_TOKEN" >> .env
+          echo "CLIENT_ID=$CLIENT" >> .env
+          echo "GUILD_ID=$GUILD" >> .env
+        env:
+          DB_URL: ${{ secrets.DATABASE_URL }}
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          CLIENT: ${{ secrets.CLIENT_ID }}
+          GUILD: ${{ secrets.GUILD_ID }}
       - name: ls
         run: |
           ls
