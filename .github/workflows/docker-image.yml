@@ -53,6 +53,18 @@ jobs:
         with:
           push: true
           file: Bot.Dockerfile
+          tags: bugg86/usav3-bot:${{ github.sha }}, bugg86/usav3-bot:latest
+          platforms: linux/amd64
+          build-args: |
+            DATABASE_URL=${{ secrets.DATABASE_URL }}
+            TOKEN=${{ secrets.BOT_TOKEN }}
+            CLIENT_ID=${{ secrets.CLIENT_ID }}
+            GUILD_ID=${{ secrets.GUILD_ID }}
+      - uses: docker/build-push-action@v6.18.0
+        name: Build and push api image
+        with:
+          push: true
+          file: Api.Dockerfile
           tags: bugg86/usav3-botapi:${{ github.sha }}, bugg86/usav3-botapi:latest
           platforms: linux/amd64
           build-args: |
