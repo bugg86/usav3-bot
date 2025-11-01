@@ -6,7 +6,7 @@ COPY package*.json bun.lock ./
 
 RUN bun install --frozen-lockfile
 
-COPY ./src/bot ./src
+COPY ./src/bot ./src/bot
 COPY .env ./
 
-CMD ["bun", "run", "src/index.ts"]
+CMD ["bun", "run", "src/bot/index.ts"]

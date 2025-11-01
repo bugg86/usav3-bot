@@ -15,7 +15,7 @@ services:
   db:
     image: postgres:17
     container_name: postgres_db
-    restart: unless_stopped
+    restart: unless-stopped
     ports:
       - '5432:5432'
     environment:
@@ -27,11 +27,11 @@ services:
   discord:
     image: bugg86/usav3-bot:latest
     container_name: discord_bot
-    restart: unless_stopped
+    restart: unless-stopped
   api:
     image: bugg86/usav3-botapi:latest
     container_name: api
-    restart: unless_stopped
+    restart: unless-stopped
     ports:
       - '3000:3000'
 
