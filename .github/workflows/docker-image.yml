@@ -31,8 +31,7 @@ jobs:
           GUILD: ${{ secrets.GUILD_ID }}
       - name: ls
         run: |
-          ls ./src
-          cat .env
+          ls ./
         
       - uses: docker/login-action@v3.6.0
         name: Login to docker
