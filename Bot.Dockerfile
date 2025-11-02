@@ -1,4 +1,4 @@
-FROM oven/bun:slim AS base
+FROM --platform=$BUILDPLATFORM oven/bun:slim AS base
 
 ARG DATABASE_URL
 ARG TOKEN
@@ -19,5 +19,8 @@ RUN bun install --frozen-lockfile
 
 COPY ./src/bot ./src/bot
 # COPY .env ./
+
+EXPOSE 443
+EXPOSE 50000-65535
 
 CMD ["bun", "run", "src/bot/index.ts"]

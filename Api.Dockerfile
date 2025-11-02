@@ -19,6 +19,7 @@ COPY ./prisma ./prisma
 # COPY .env ./
 
 RUN bun install
+RUN bun install @prisma/client
 RUN bunx prisma generate
 
 COPY ./src/api ./src/api

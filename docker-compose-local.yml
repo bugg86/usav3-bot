@@ -25,11 +25,26 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
   discord:
-    image: bugg86/usav3-bot:latest
+    build:
+      dockerfile: Bot.Dockerfile
+      args:
+        BUILD_PLATFORM: "linux/arm64"
+    environment:
+      TOKEN:
+      CLIENT_ID: 1434329527152017458
+      GUILD_ID: 1300648645372285029
+      API_URL: http://api:3000/
     container_name: discord_bot
     restart: unless-stopped
+    depends_on:
+      - db
   api:
-    image: bugg86/usav3-botapi:latest
+    build:
+      dockerfile: Api.Dockerfile
+      args:
+        BUILD_PLATFORM: "linux/arm64"
+    environment:
+      DATABASE_URL: postgresql://admin:admin@postgres_db:5432/database
     container_name: api
     restart: unless-stopped
     ports:

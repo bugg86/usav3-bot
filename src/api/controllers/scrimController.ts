@@ -15,3 +15,11 @@ import { Request, Response } from 'express';
 
         return response;
     }
+
+    export async function remove(id: string, res: Response){
+        const response = await prisma.scrim.deleteMany({
+            where: {
+                discordId: BigInt(id)
+            }
+        })
+    }
